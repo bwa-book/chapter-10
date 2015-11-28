@@ -39,12 +39,18 @@ class InterfaceController: WKInterfaceController {
         loadImageFromAddress(emojiList[pickerIndex].1)
     }
     
+    private var communicationManager: CommunicationManager?
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
         if pickerItems.isEmpty {
             pickerItems = [loadingPickerItem()]
             requestData()
+        }
+        
+        if let extensionDelegate = WKExtension.sharedExtension().delegate as? ExtensionDelegate {
+            communicationManager = extensionDelegate.communicationManager
         }
     }
     

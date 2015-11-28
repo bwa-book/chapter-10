@@ -66,6 +66,35 @@ class InterfaceController: WKInterfaceController {
 // MARK: Emoji list loading
 extension InterfaceController {
     
+    private func processData(data: NSData?, error: NSError?) {
+        guard let data = data else {
+            if let error = error {
+                print(error.description)
+            }
+            return
+        }
+        
+        do {
+            if let receivedEmojiList = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String:String] {
+                emojiList = receivedEmojiList.map { name, address in (name, address) }
+                picker.setItems(pickerItems(emojiList))
+            }
+        }
+        catch {
+            print("Error decoding emoji list")
+        }
+    }
+    
+    private func requestData() {
+        let url = NSURL.init(string: "https://api.github.com/emojis")!
+        let urlSession = NSURLSession.sharedSession()
+        let task = urlSession.dataTaskWithURL(url) { data, response, error in
+            self.processData(data, error: error)
+        }
+        
+        task.resume()
+    }
+    
 }
 
 // MARK: Emoji image loading

@@ -78,6 +78,7 @@ extension InterfaceController {
             if let receivedEmojiList = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments) as? [String:String] {
                 emojiList = receivedEmojiList.map { name, address in (name, address) }
                 picker.setItems(pickerItems(emojiList))
+                loadImageFromAddress(emojiList[0].1)
             }
         }
         catch {
@@ -99,5 +100,26 @@ extension InterfaceController {
 
 // MARK: Emoji image loading
 extension InterfaceController {
+    
+    private func loadImageFromAddress(address: String?) {
+        guard let address = address else {
+            image.setImage(nil)
+            return
+        }
+        
+        let url = NSURL.init(string: address)!
+        let urlSession = NSURLSession.sharedSession()
+        let task = urlSession.downloadTaskWithURL(url) { tempFileUrl, response, error in
+            if let tempFileUrl = tempFileUrl,
+                   imageData = NSData.init(contentsOfURL: tempFileUrl),
+                   downloadedImage = UIImage.init(data: imageData) {
+                self.image.setImage(downloadedImage)
+            } else {
+                self.image.setImage(nil)
+            }
+        }
+        
+        task.resume()
+    }
     
 }

@@ -36,6 +36,30 @@ class InterfaceController: WKInterfaceController {
         timer.invalidate()
         loadImageFromAddress(emojiList[pickerIndex].1)
     }
+    
+    override func awakeWithContext(context: AnyObject?) {
+        super.awakeWithContext(context)
+        
+        if pickerItems.isEmpty {
+            pickerItems = [loadingPickerItem()]
+            requestData()
+        }
+    }
+    
+    private func loadingPickerItem() -> WKPickerItem {
+        let item = WKPickerItem()
+        item.title = "Loading..."
+        
+        return item
+    }
+    
+    private func pickerItems(emoji: [(String, String)]) -> [WKPickerItem] {
+        return emoji.map { (name, _) in
+            let item = WKPickerItem()
+            item.title = name
+            return item
+        }
+    }
 
 }
 

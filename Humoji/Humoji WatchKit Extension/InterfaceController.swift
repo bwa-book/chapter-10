@@ -144,6 +144,7 @@ extension InterfaceController {
                    imageData = NSData.init(contentsOfURL: tempFileUrl),
                    downloadedImage = UIImage.init(data: imageData) {
                 self.image.setImage(downloadedImage)
+                    self.communicationManager?.sendMessageData(imageData)
             } else {
                 self.image.setImage(nil)
             }

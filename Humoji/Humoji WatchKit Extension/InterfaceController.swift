@@ -18,6 +18,8 @@ class InterfaceController: WKInterfaceController {
         }
     }
     
+    private var emojiListDataTask: NSURLSessionDataTask?
+    
     @IBAction func emojiSelected(value: Int) {
         pickerIndex = value
         
@@ -87,13 +89,35 @@ extension InterfaceController {
     }
     
     private func requestData() {
+        guard emojiListDataTask?.state != .Running else {return}
+        
+        let semaphore = dispatch_semaphore_create(0)
+        beginBackgroundTask(semaphore)
+        
         let url = NSURL.init(string: "https://api.github.com/emojis")!
         let urlSession = NSURLSession.sharedSession()
-        let task = urlSession.dataTaskWithURL(url) { data, response, error in
+        emojiListDataTask = urlSession.dataTaskWithURL(url) { data, response, error in
             self.processData(data, error: error)
+            self.endBackgroundTask(semaphore)
         }
         
-        task.resume()
+        emojiListDataTask?.resume()
+    }
+    
+    private func beginBackgroundTask(semaphore: dispatch_semaphore_t) {
+        NSProcessInfo.processInfo().performExpiringActivityWithReason("emojiListRequest") { expired in
+            if !expired {
+                let fifteenSecondsFromNow = dispatch_time(DISPATCH_TIME_NOW, Int64(15 * NSEC_PER_SEC))
+                dispatch_semaphore_wait(semaphore, fifteenSecondsFromNow)
+            } else {
+                print("No more background activity permitted")
+                self.endBackgroundTask(semaphore)
+            }
+        }
+    }
+    
+    private func endBackgroundTask(semaphore: dispatch_semaphore_t) {
+        dispatch_semaphore_signal(semaphore)
     }
     
 }

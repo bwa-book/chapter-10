@@ -31,6 +31,11 @@ class InterfaceController: WKInterfaceController {
         )
         NSRunLoop.mainRunLoop().addTimer(imageLoadTimer!, forMode: NSDefaultRunLoopMode)
     }
+    
+    func imageTimerFired(timer: NSTimer) {
+        timer.invalidate()
+        loadImageFromAddress(emojiList[pickerIndex].1)
+    }
 
 }
 

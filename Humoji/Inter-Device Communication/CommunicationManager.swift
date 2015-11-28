@@ -11,6 +11,8 @@ class CommunicationManager: NSObject {
     
     var session: WCSession?
     
+    var onReceivedMessageData: (NSData -> Void)?
+    
 }
 
 extension CommunicationManager: WCSessionDelegate {
@@ -25,6 +27,10 @@ extension CommunicationManager: WCSessionDelegate {
         } else {
             print("WCSession unsupported")
         }
+    }
+    
+    func session(session: WCSession, didReceiveMessageData messageData: NSData) {
+        onReceivedMessageData?(messageData)
     }
     
 }

@@ -13,6 +13,12 @@ class CommunicationManager: NSObject {
     
     var onReceivedMessageData: (NSData -> Void)?
     
+    func sendMessageData(data: NSData) {
+        if let session = session where session.reachable {
+            session.sendMessageData(data, replyHandler: nil, errorHandler: nil)
+        }
+    }
+    
 }
 
 extension CommunicationManager: WCSessionDelegate {

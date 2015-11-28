@@ -19,6 +19,7 @@
 		4DACCF651C09523C00745AAD /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DACCF641C09523C00745AAD /* InterfaceController.swift */; };
 		4DACCF671C09523C00745AAD /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DACCF661C09523C00745AAD /* ExtensionDelegate.swift */; };
 		4DACCF691C09523C00745AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DACCF681C09523C00745AAD /* Assets.xcassets */; };
+		4DACCF7A1C095B9600745AAD /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DACCF791C095B9600745AAD /* CommunicationManager.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		4DACCF661C09523C00745AAD /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		4DACCF681C09523C00745AAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4DACCF6A1C09523C00745AAD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DACCF791C095B9600745AAD /* CommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommunicationManager.swift; path = "Inter-Device Communication/CommunicationManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		4DACCF351C09523C00745AAD = {
 			isa = PBXGroup;
 			children = (
+				4DACCF781C095B7500745AAD /* Inter-Device Communication */,
 				4DACCF401C09523C00745AAD /* Humoji */,
 				4DACCF541C09523C00745AAD /* Humoji WatchKit App */,
 				4DACCF631C09523C00745AAD /* Humoji WatchKit Extension */,
@@ -152,6 +155,14 @@
 				4DACCF6A1C09523C00745AAD /* Info.plist */,
 			);
 			path = "Humoji WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		4DACCF781C095B7500745AAD /* Inter-Device Communication */ = {
+			isa = PBXGroup;
+			children = (
+				4DACCF791C095B9600745AAD /* CommunicationManager.swift */,
+			);
+			name = "Inter-Device Communication";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DACCF441C09523C00745AAD /* ViewController.swift in Sources */,
+				4DACCF7A1C095B9600745AAD /* CommunicationManager.swift in Sources */,
 				4DACCF421C09523C00745AAD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

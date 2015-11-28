@@ -13,6 +13,10 @@
                         <imageView width="64" height="64" alignment="center" id="rhP-on-eQE"/>
                         <picker width="1" height="100" alignment="center" verticalAlignment="bottom" indicatorMode="shownWhileFocused" id="r2c-F6-7YD"/>
                     </items>
+                    <connections>
+                        <outlet property="image" destination="rhP-on-eQE" id="iwb-SY-dPd"/>
+                        <outlet property="picker" destination="r2c-F6-7YD" id="lRf-8l-RJW"/>
+                    </connections>
                 </controller>
             </objects>
         </scene>

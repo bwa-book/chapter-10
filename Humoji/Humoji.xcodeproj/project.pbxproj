@@ -20,6 +20,7 @@
 		4DACCF671C09523C00745AAD /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DACCF661C09523C00745AAD /* ExtensionDelegate.swift */; };
 		4DACCF691C09523C00745AAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DACCF681C09523C00745AAD /* Assets.xcassets */; };
 		4DACCF7A1C095B9600745AAD /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DACCF791C095B9600745AAD /* CommunicationManager.swift */; settings = {ASSET_TAGS = (); }; };
+		4DACCF7B1C095C5A00745AAD /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DACCF791C095B9600745AAD /* CommunicationManager.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -307,6 +308,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DACCF671C09523C00745AAD /* ExtensionDelegate.swift in Sources */,
+				4DACCF7B1C095C5A00745AAD /* CommunicationManager.swift in Sources */,
 				4DACCF651C09523C00745AAD /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,11 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Humoji_WatchKit_App" customModuleProvider="target">
                     <items>
                         <imageView width="64" height="64" alignment="center" id="rhP-on-eQE"/>
-                        <picker width="1" height="100" alignment="center" verticalAlignment="bottom" indicatorMode="shownWhileFocused" id="r2c-F6-7YD"/>
+                        <picker width="1" height="100" alignment="center" verticalAlignment="bottom" indicatorMode="shownWhileFocused" id="r2c-F6-7YD">
+                            <connections>
+                                <action selector="emojiSelected:" destination="AgC-eL-Hgc" id="Ea3-Ce-8k4"/>
+                            </connections>
+                        </picker>
                     </items>
                     <connections>
                         <outlet property="image" destination="rhP-on-eQE" id="iwb-SY-dPd"/>

@@ -17,6 +17,20 @@ class InterfaceController: WKInterfaceController {
             picker.focus()
         }
     }
+    
+    @IBAction func emojiSelected(value: Int) {
+        pickerIndex = value
+        
+        imageLoadTimer?.invalidate()
+        imageLoadTimer = NSTimer(
+            timeInterval: 0.3,
+            target: self,
+            selector: "imageTimerFired:",
+            userInfo: nil,
+            repeats: false
+        )
+        NSRunLoop.mainRunLoop().addTimer(imageLoadTimer!, forMode: NSDefaultRunLoopMode)
+    }
 
 }
 

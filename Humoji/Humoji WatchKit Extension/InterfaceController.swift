@@ -27,7 +27,7 @@ class InterfaceController: WKInterfaceController {
         imageLoadTimer = NSTimer(
             timeInterval: 0.3,
             target: self,
-            selector: "imageTimerFired:",
+            selector: #selector(InterfaceController.imageTimerFired(_:)),
             userInfo: nil,
             repeats: false
         )
